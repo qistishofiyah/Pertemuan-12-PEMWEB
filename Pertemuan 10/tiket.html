@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validasi</title>
+  <h1>Form Validasi</h1>
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <tr>
+      <td>Nama Pelanggan</td>
+      <td>:</td>
+    <td><input type="text" id="nama" name="nama" required maxlength="30"></td> 
+    </tr>
+    <br>
+    <tr>
+      <td>Email</td>
+      <td>:</td>
+    <td><input type="email" id="email" name="email" required></td>
+    </tr>
+    <br>
+    <tr>
+      <td>Jam keberangkatan</td>
+      <td>:</td>
+    <td><input type="time" id="jamKeberangkatan" name="jamKeberangkatan" required></td>
+    </tr>
+    <br>
+    <tr>
+      <td>Tujuan keberangkatan</td>
+      <td>:</td>
+    <td><input type="text" id="tujuanKeberangkatan" name="tujuanKeberangkatan" required></td>
+    </tr>
+    <br>
+    <label for="jumlahTiket">Jumlah Tiket:</label>
+    <input type="number" id="jumlahTiket" name="jumlahTiket" required min="1" max="10">
+    <br>
+  
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      const nama = document.getElementById("nama").value;
+      const email = document.getElementById("email").value;
+      const jamKeberangkatan = document.getElementById("jamKeberangkatan").value;
+      const tujuanKeberangkatan = document.getElementById("tujuanKeberangkatan").value;
+      const jumlahTiket = document.getElementById("jumlahTiket").value;
+
+      // Validasi tambahan untuk jam ( jika diperlukan )
+      // ....
+      
+      // Jika semua valid, tampilkan konfirmasi
+      if (nama && email && jamkeberangkatan && tujuankeberangkatan && jumlahTiket) {
+        alert("Data valid. Terima Kasih!");
+        return true;
+      } else {
+        alert("Harap lengkapi semua data.");
+        return false;
+      }
+
+      
+      }
+    
+  </script>
+</body>
+</html>

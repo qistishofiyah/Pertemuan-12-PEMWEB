@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: white;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            
+        }
+
+        .form-container h2 {
+            text-align: center;
+            
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid whitesmoke;
+            border-radius: 5px;
+        }
+
+        .form-group input.error {
+            border-color: red;
+            background-color: white;
+        }
+
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: white;
+            background: #4CAF50;
+            border: none;
+            border-radius: 5px;
+          
+        }
+
+   
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Form Registrasi Seminar / Workshop</h2>
+        <form id="validationForm">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap </label>
+                <input type="text" id="nama" name="nama">
+                <div class="error-message" id="error-nama"></div>
+            </div>
+            <div class="form-group">
+                <label for="tempat lahir">Tempat,lahir</label>
+                <input type="tempat lahir" id="tempat" name="tempat lahir">
+                <div class="error-message" id="error-tempat lahir"></div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" id="gender" name="gender">
+                <div class="error-message" id="error-gender"></div>
+            </div>
+            <div class="form-group">
+                <label for="tanggal lahir">Tanggal,lahir</label>
+                <input type="text" id="tanggal lahir" name="tanggal lahir">
+                <div class="error-message" id="error-tanggal lahir"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="number" id="email" name="email">
+                <div class="error-message" id="error-email"></div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('validationForm');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+           // Validasi Nama Lengkap
+           const nama = document.getElementById('nama');
+            const errorNama = document.getElementById('error-nama');
+            if (nama.value.trim() === '' || nama.value.length > 30) {
+                errorNama.textContent = 'Nama wajib diisi (maksimal 30 karakter).';
+                nama.classList.add('error');
+                isValid = false;
+            } else {
+                errorNama.textContent = '';
+                nama.classList.remove('error');
+            }
+
+            // Validasi Tempat,lahir
+            const tempatLahir= document.getElementById('tempat lahir');
+            const errortempatLahir = document.getElementById('error-tempat lahir');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!tempatlLahirPattern.test(tempatLahir.value)) {
+                errortempatLahir.textContent = 'Format tempat Lahir tidak valid.';
+                tempatLahir.classList.add('error');
+                isValid = false;
+            } else {
+                errortempatLahir.textContent = '';
+                tempatLahir.classList.remove('error');
+            }
+
+            // Validasi Gender
+            const gender = document.getElementById('gender');
+            const errorgender = document.getElementById('error-gender');
+            const genderPattern = /^([01]?[0-9]|2[0-3])\.[0-5][0-9]$/;
+            if (!genderPattern.test(gender.value)) {
+                errorgender.textContent = 'Format gender tidak valid .';
+                gender.classList.add('error');
+                isValid = false;
+            } else {
+                errorgender.textContent = '';
+                gender.classList.remove('error');
+            }
+
+            // Validasi Tanggal, lahir
+            const tanggalLahir = document.getElementById('tanggal lahir');
+            const errortanggalLahir = document.getElementById('error-tanggal lahir');
+            const tanggalLahirPattern = /^([01]?[0-9]|2[0-3])\.[0-5][0-9]$/;
+            if (!tanggalLahirPattern.test(tanggalLahir.value)) {
+                errortanggalLahir.textContent = 'Format tanggal lahir tidak valid .';
+                tanggalLahir.classList.add('error');
+                isValid = false;
+            } else {
+                errortanggalLahir.textContent = '';
+                tanggalLahir.classList.remove('error');
+            }
+
+            // Validasi Email
+            const email = document.getElementById('tanggal lahir');
+            const erroremail = document.getElementById('error-tanggal lahir');
+            const EmailPattern = /^([01]?[0-9]|2[0-3])\.[0-5][0-9]$/;
+            if (!emailPattern.test(email.value)) {
+                erroremail.textContent = 'Format tanggal lahir tidak valid .';
+                email.classList.add('error');
+                isValid = false;
+            } else {
+                erroremail.textContent = '';
+                email.classList.remove('error');
+            }
+
+            // Jika valid, tampilkan data
+            if (isValid) {
+                result.style.display = 'block';
+                result.innerHTML = `
+                    <h3>Data Valid</h3>
+                    <p><strong>Nama Lengkap:</strong> ${nama.value}</p>
+                    <p><strong>Tempat, lahir:</strong> ${tempatLahir.value}</p>
+                    <p><strong>Gender:</strong> ${gender.value}</p>
+                    <p><strong>Tanggal, lahir:</strong> ${tanggalLahir.value}</p>
+                    <p><strong>Email:</strong> ${email.value}</p>
+                `;
+            } else {
+                result.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
